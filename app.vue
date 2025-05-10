@@ -41,6 +41,7 @@
       </div>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -139,6 +140,8 @@ function reiniciar() {
 }
 
 const toast = useNuxtApp().$toast;
+
+import Footer from '~/components/footer.vue';  // Importar el componente Footer
 
 </script>
 
