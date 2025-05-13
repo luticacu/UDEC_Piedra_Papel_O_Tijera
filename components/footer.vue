@@ -63,7 +63,7 @@ p {
     color: white;
     display: flex;
     justify-content: space-between;
-    /* position: fixed; */
+    position: fixed;
     align-items: center;
     padding: 1rem 2rem;
     width: 100%;

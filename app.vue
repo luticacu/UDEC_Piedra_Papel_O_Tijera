@@ -1,22 +1,8 @@
 <template>
+  <Header :scores="scores" />
   <div class="wrapper">
     <div class="container">
-      <h1 class="title">Piedra, Papel o Tijeras</h1>
-
-      <div class="scoreboard">
-        <div>
-          <p>Usuario</p>
-          <p>{{ scores.usuario }}</p>
-        </div>
-        <div>
-          <p>Empates</p>
-          <p>{{ scores.empates }}</p>
-        </div>
-        <div>
-          <p>Computadora</p>
-          <p>{{ scores.computadora }}</p>
-        </div>
-      </div>
+      <h1 class="title">Elige tu jugada</h1>
 
       <div class="selector">
         <label for="rondas">Mejor de:</label>
@@ -28,8 +14,7 @@
       </div>
 
       <div class="jugadas">
-        <p>Elige tu jugada:</p>
-        <div class="botones">
+        <div class="botones bot-carrusel">
           <button v-for="jugada in jugadas" :key="jugada" @click="calcularResultado(jugada)">
             {{ icono(jugada) }}
           </button>
@@ -142,6 +127,7 @@ function reiniciar() {
 const toast = useNuxtApp().$toast;
 
 import Footer from '~/components/footer.vue';  // Importar el componente Footer
+import Header from '~/components/header.vue';  // Importar el componente Header
 
 </script>
 
@@ -149,10 +135,29 @@ import Footer from '~/components/footer.vue';  // Importar el componente Footer
 body {
   margin: 0;
 }
+
+/* Contenedor del carrusel */
+.bot-carrusel {
+  display: flex;
+  overflow: hidden; /* Oculta los botones que salen del contenedor */
+  width: 100%; /* Ajusta el ancho del carrusel */
+  position: relative;
+}
+
+.bot-carrusel button:hover {
+  animation: botCarrusel 1s 1;
+}
+
+@keyframes botCarrusel {
+  50% {
+    transform: rotatey(180deg);
+  }
+}
+
 .wrapper {
   height: 100vh;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background: #afafaf;
 }
@@ -195,6 +200,7 @@ body {
 }
 
 .selector label {
+  margin-top: 1.5rem;
   display: block;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -247,4 +253,5 @@ body {
 .reiniciar button:hover {
   background: #b91c1c;
 }
+
 </style>
